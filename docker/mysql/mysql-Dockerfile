@@ -1,0 +1,10 @@
+FROM mysql:8.0.19
+
+COPY ./docker/mysql/todos.sql /docker-entrypoint-initdb.d/todos.sql
+
+#COPY ./docker/mysql/mysqld.cnf /etc/mysql/conf.d
+
+# 给执行文件增加可执行权限
+RUN chmod a+x /docker-entrypoint-initdb.d/todos.sql
+
+ENV LANG C.UTF-8
